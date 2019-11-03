@@ -169,7 +169,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 
 
-
+#wallpaper
+exec nitrogen --restore
 
 
 # reload the configuration file
