@@ -27,15 +27,14 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 exec nm-applet &
-exec xfce4-volumed &
+
 # start a terminal
 bindsym $mod+Return exec lxterminal #i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-#screenshot
-bindsym $mod+q exec scrot
+
 
 
 # Disable titlebar
@@ -52,22 +51,10 @@ popup_during_fullscreen smart
 
 
 
-#volume
 
 
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
-
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
-
-bindsym XF86AudioMicMute exec pactl set-source-mute alsa_input.pci-0000_00_1b.0.analog-stereo toggle
-
-exec_always setxkbmap -model pc105 -rules evdev -layout us,ua,ru -option grp:shift_caps_switch,terminate:ctrl_alt_bksp,grp_led:scroll,compose:ralt
 
 
-# start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
 
 
 #start rofi
