@@ -49,7 +49,14 @@ new_float pixel 1
 # Enable popup during fullscreen
 popup_during_fullscreen smart
 
-
+# Pin window class on specific workspace
+assign [class="^Firefox$"] 1
+assign [class="chromium-browser"] 2
+assign [class="subl"] 3
+assign [class="code"] 4
+assign [class="lxterminal"] 5
+assign [class="ranger"] 6
+assign [class="telegram-desktop"] 7
 
 
 
