@@ -14,9 +14,9 @@ set $volMod 2
 
 # Scripts
 
-set $sys ~/.config/i3utils/scripts/i3sys.sh
-set $layout ~/.config/i3utils/scripts/layout.sh
-set $sound ~/.config/i3utils/scripts/sound.sh
+#set $sys ~/.config/i3utils/scripts/i3sys.sh
+#set $layout ~/.config/i3utils/scripts/layout.sh
+#set $sound ~/.config/i3utils/scripts/sound.sh
 #set $screenshot ~/.config/i3utils/scripts/screenshot.sh
 
 # Colors
