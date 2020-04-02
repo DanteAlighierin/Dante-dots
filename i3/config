@@ -38,16 +38,16 @@ set $base0E #AD00A1
 set $base0F #CC6633
 
 # Workspaces
-set $ws1 1: <span color="#78da59">1:</span>
-set $ws2 2: <span color="#ffff33">2:</span>
-set $ws3 3: <span color="#cc00ff">3:</span>
-set $ws4 4: <span color="#00A1F1">4:</span>
-set $ws5 5: <span color="#F65314">5:</span>
-set $ws6 6: <span color="#f7786b">6:</span>
-set $ws7 7: <span color="#FBBC05">7:</span>
-set $ws8 8: <span color="#00ffff">8:</span>
-set $ws9 9: <span color="#33bdf5">9:</span>
-set $ws10 10: <span color="#ff66ff">10:</span>
+set $ws1 1: <span color="#F7E7DA">Chromium: </span>
+set $ws2 2: <span color="#F7E7DA">Firefox: </span>
+set $ws3 3: <span color="#F7E7Da">Terminal: </span>
+set $ws4 4: <span color="#F7E7DA">Teminal: </span>
+set $ws5 5: <span color="#F7E7DA">Code: </span>
+set $ws6 6: <span color="#F7E7DA">Code: </span>
+set $ws7 7: <span color="#F7E7DA">Notes: </span>
+set $ws8 8: <span color="#F7E7DA">Music: </span>
+set $ws9 9: <span color="#F7E7DA">Social: </span>
+set $ws10 10: <span color="#F7E7DA">Telegram: </span>
 
 # Gaps
 set $gaps_inner 10
@@ -392,11 +392,12 @@ bindsym $mod+Shift+g mode "$mode_gaps"
 bar {
         status_command i3status
 position top
+
 strip_workspace_numbers yes
         font pango:Hack, FontAwesome 10
       	colors {
           		background #524D53
-          		separator  #524D53
+          		separator  #BA6E87
           		statusline #524D53
 
           		# State             Border  BG      Text
