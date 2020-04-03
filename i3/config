@@ -397,7 +397,7 @@ strip_workspace_numbers yes
         font pango:Hack, FontAwesome 10
       	colors {
           		background #524D53
-          		separator  #BA6E87
+          		separator  #F7E7DA
           		statusline #524D53
 
           		# State             Border  BG      Text
