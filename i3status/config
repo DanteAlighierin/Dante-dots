@@ -33,7 +33,7 @@ order += "tztime local"
 
 wireless _first_ {
 		format_up = " [%essid ]"       
-		format_down = " Nokia 3.1"
+		format_down = "<span color='#F7E7DA'> Nokia 3.1</span>"
 	# format_up = "<span color='#73ABFF'>[  ]: On: %essid </span> "   //(%quality at %essid) %ip"
 	# format_down = "" #"[  ]  Wifi: down"
 }
@@ -61,13 +61,13 @@ battery 0 {
 
 
 tztime local {
-	    format = "<span color='#ffc125'>%time</span>"
+	    format = "<span color='#F7E7DA'>%time</span>"
         format_time = "  %I:%M %p |  %a [%d]-%b [%m]"
 }
 
 
 volume master {
-        format = "<span color='#CEA8FF'>[  ]: %volume </span>"
+        format = "<span color='#F7E7DA'>[  ]: %volume </span>"
         format_muted = "<span color='#cfafc8'>[  ]: muted (%volume) </span>"
         device = "default"
         mixer = "Master"
