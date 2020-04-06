@@ -18,6 +18,7 @@ set $volMod 2
 #set $layout ~/.config/i3utils/scripts/layout.sh
 #set $sound ~/.config/i3utils/scripts/sound.sh
 #set $screenshot ~/.config/i3utils/scripts/screenshot.sh
+exec ~/.config/polybar/launch.sh
 
 # Colors
 set $base00 #151515
@@ -139,14 +140,15 @@ client.background       $base07
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
 
-
+#polybar
+polybar example --config=/usr/local/share/doc/polybar/config
 
 
 ### Borders settings
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border 1pixel
-default_floating_border 1pixel
+default_border none
+default_floating_border none
 
 hide_edge_borders none
 
@@ -389,7 +391,7 @@ bindsym $mod+Shift+g mode "$mode_gaps"
 ### Bar
 
 # Start i3bar to display a workspace bar
-bar {
+#bar {
         status_command i3status
 position top
 
