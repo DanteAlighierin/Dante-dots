@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=compton
+Type=Application
+Exec=compton --vsync opengl
