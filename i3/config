@@ -161,7 +161,7 @@ client.background       $base07
 ### Borders settings
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border normal
+new_window 1pixel
 default_floating_border normal
 
 hide_edge_borders none
