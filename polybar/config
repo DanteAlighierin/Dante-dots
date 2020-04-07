@@ -240,7 +240,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp3s0
+interface = enp1s0
 interval = 3.0
 
 format-connected-underline = ${colors.primary}
@@ -281,11 +281,11 @@ type = internal/volume
 format-volume = <bar-volume> <label-volume>
 label-volume-foreground = ${root.foreground}
 
-format-volume-prefix = " "
+format-volume-prefix = "    "
 
 format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+label-muted =    sound muted
 
 bar-volume-width = 10
 bar-volume-foreground-0 = ${colors.primary}
@@ -303,6 +303,11 @@ bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
+
+
+
+
+
 
 [module/battery]
 type = internal/battery
@@ -409,7 +414,7 @@ margin-bottom = 5
 type = custom/script
 interval = 5
 
-exec = ~/.config/polybar/custom/redshift.sh
+;exec = ~/.config/polybar/custom/redshift.sh
 
 [module/music]
 type = custom/script
@@ -417,6 +422,14 @@ interval = 2
 
 label = %output:0:45:...%
 ;exec = ~/.config/polybar/custom/mpris.sh
+
+
+
+
+
+
+
+
 
 [module/updates]
 type = custom/script
