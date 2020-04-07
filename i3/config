@@ -39,6 +39,17 @@ set $base0E #AD00A1
 set $base0F #CC6633
 
 # Workspaces
+#set $WS1 "1"
+#set $WS2 "2"
+#set $WS3 "3"
+#set $WS4 "4"
+#set $WS5 "5"
+#set $WS6 "6"
+#set $WS7 "7"
+#set $WS8 "8"
+#set $WS9 "9"
+#set $WS10 "10"
+
 set $ws1 1: <span color="#F7E7DA">Chromium: </span>
 set $ws2 2: <span color="#F7E7DA">Firefox: </span>
 set $ws3 3: <span color="#F7E7Da">Terminal: </span>
@@ -49,6 +60,10 @@ set $ws7 7: <span color="#F7E7DA">Notes: </span>
 set $ws8 8: <span color="#F7E7DA">Music: </span>
 set $ws9 9: <span color="#F7E7DA">Social: </span>
 set $ws10 10: <span color="#F7E7DA">Telegram: </span>
+
+
+
+
 
 # Gaps
 set $gaps_inner 10
@@ -140,15 +155,14 @@ client.background       $base07
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
 
-#polybar
-polybar example --config=/usr/local/share/doc/polybar/config
+
 
 
 ### Borders settings
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border none
-default_floating_border none
+default_border normal
+default_floating_border normal
 
 hide_edge_borders none
 
