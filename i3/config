@@ -171,6 +171,11 @@ bindsym $mod+u border none
 bindsym $mod+y border pixel 1
 bindsym $mod+n border normal
 
+
+###redshift
+exec --no-startup-id redshift -l LAT:LON
+
+
 ### Misc
 
 # Use Mouse+$mod to drag floating windows to their wanted position
