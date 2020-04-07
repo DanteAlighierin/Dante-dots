@@ -1,11 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-
-# Terminate already running bar instances
+# Завершить текущие экземпляры polybar
 killall -q polybar
 
-# Wait until the processes have been shut down
+# Ожидание полного завершения работы процессов
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-# Launch bar1 and bar2
-polybar -r topbar &
+# Запуск Polybar со стандартным расположением конфигурационного файла в ~/.config/polybar/config
+polybar mybar &
+
+echo "Polybar загрузился..."
