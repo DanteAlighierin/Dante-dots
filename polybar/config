@@ -26,15 +26,15 @@
 ;=====================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #222
-background-alt = #444
-;foreground = ${xrdb:color7:#222}
+;background = ${xrdb:color0:#2e3440}
+background = #2e3440
+background-alt = #2e3440
+;foreground = ${xrdb:color7:#eceff4}
 foreground = #dfdfdf
 foreground-alt = #ccc
-primary = #267fb5
-secondary = #748aa6
-alert = #FF410D
+primary = #5e81ac
+secondary = #b48ead
+alert = #bf616a
 
 [bar/mybar]
 ;monitor = ${env:MONITOR:eDP1}
