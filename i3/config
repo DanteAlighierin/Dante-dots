@@ -424,12 +424,11 @@ strip_workspace_numbers yes
           		statusline #524D53
 
           		# State             Border  BG      Text
-          		focused_workspace   $base0D $base0D $base00
-          		active_workspace    $base05 $base03 $base00
-          		inactive_workspace  #524D53 #524D53 $base05
-          		urgent_workspace    $base08 $base08 $base00
-          		binding_mode        $base00 $base0A $base00
-      	}
+                        focused_workspace  #5A8DBD #383134
+                        active_workspace   #5A8DBD #383134
+                        inactive_workspace #A9B8B5 #616D59
+                        urgent_workspace   #E93E38 #383134      	
+}
 }
 
 # hide/unhide i3status bar
