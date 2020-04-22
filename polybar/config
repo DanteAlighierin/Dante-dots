@@ -267,7 +267,11 @@ time-alt = %H:%M:%S
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 
+
 label = %date% %time%
+
+
+
 
 [module/bumblebee]
 type = custom/script
@@ -275,34 +279,6 @@ interval = 4
 ;exec = ~/.config/polybar/custom/bumblebee.sh
 
 
-[module/volume]
-type = internal/volume
-
-format-volume = <bar-volume> <label-volume>
-label-volume-foreground = ${root.foreground}
-
-format-volume-prefix = "    "
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted =    sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.primary}
-bar-volume-foreground-1 = ${colors.primary}
-bar-volume-foreground-2 = ${colors.primary}
-bar-volume-foreground-3 = ${colors.primary}
-bar-volume-foreground-4 = ${colors.primary}
-bar-volume-foreground-5 = ${colors.alert}
-bar-volume-foreground-6 = ${colors.alert}
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
 
 
 
