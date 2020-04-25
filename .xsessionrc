@@ -1,2 +1,3 @@
 #!/bin/sh
-exec setxkbmap "us,ru" ",winkeys" "grp:alt_shift_toggle"
+
+setxkbmap "us,ru" ",winkeys" "grp:alt_shift_toggle"
