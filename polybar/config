@@ -45,6 +45,14 @@ height = 27
 radius = 0.0
 fixed-center = true
 
+
+
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+
+
 background = ${colors.background}
 foreground = ${colors.foreground}
 
@@ -65,8 +73,8 @@ font-1 = "Wuncon Siji:size=8:antialias=false;1"
 font-2 = "FontAwesome:size=8:antialias=false;1"
 
 modules-left = i3 cpu temperature memory filesystem
-modules-center = backlight music volume
-modules-right = bumblebee redshift xkeyboard battery updates date powermenu
+modules-center = backlight music volume date
+modules-right = bumblebee redshift xkeyboard battery updates powermenu
 
 tray-position = right
 tray-padding = 3
