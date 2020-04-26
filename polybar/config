@@ -130,6 +130,7 @@ pin-workspaces = true
 strip-wsnumbers = true
 enable-click = true
 reverse-scroll = false
+fuzzy-match = true
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
