@@ -128,7 +128,8 @@ wrapping-scroll = false
 pin-workspaces = true
 
 strip-wsnumbers = true
-index-sort = true
+enable-click = true
+
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
