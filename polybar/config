@@ -126,7 +126,9 @@ wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
+
 strip-wsnumbers = true
+index-sort = true
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
