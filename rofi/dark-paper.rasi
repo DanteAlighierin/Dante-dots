@@ -2,11 +2,8 @@
 Rofi Theme
 Based on Arc theme, but with Nord colorsheme
 vim: set ft=css:
- */
-configuration {
-    show-icons: true;
-    icon-theme: "MY_ICON_THEME";
-}
+*/
+
 
 * {
   nord0:                          #2E3440;
