@@ -12,6 +12,10 @@ set $mod Mod4
 set $volMod 2
 #set $screenpath ~/Pictures/Screenshots/
 
+
+exec --no-startup-id nitrogen --restore
+
+
 # Scripts
 
 #set $sys ~/.config/i3utils/scripts/i3sys.sh
