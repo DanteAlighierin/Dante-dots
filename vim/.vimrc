@@ -1,0 +1,1 @@
+/home/dante/.dotfiles/editor/vimrc
