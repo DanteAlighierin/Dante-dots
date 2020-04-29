@@ -16,6 +16,8 @@ set $volMod 2
 exec --no-startup-id nitrogen --restore
 
 
+exec compton
+
 # Scripts
 
 #set $sys ~/.config/i3utils/scripts/i3sys.sh
@@ -175,8 +177,7 @@ bindsym $mod+u border none
 bindsym $mod+y border pixel 1
 bindsym $mod+n border normal
 
-###compton
-bindsym $mod+c exec  compton --vsync opengl 
+
 
 ###redshift
 exec --no-startup-id redshift -l LAT:LON
