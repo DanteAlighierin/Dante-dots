@@ -1,2 +1,1 @@
-
-colorscheme nord
+/home/dante/.dotfiles/editor/vimrc
