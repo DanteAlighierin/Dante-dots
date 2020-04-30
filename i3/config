@@ -136,9 +136,8 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 exec --no-startup-id flameshot
 bindsym Print exec "flameshot gui"
 
+exec --no-startup-id nm-applet
 
-
-# Print screen focused window
 #bindsym $mod+Print exec --no-startup-id $screenshot -u $screenpath
 
 # Print screen entire view
