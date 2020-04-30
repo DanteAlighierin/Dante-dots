@@ -71,7 +71,7 @@ font-1 = "Wuncon Siji:size=8:antialias=false;1"
 font-2 = "FontAwesome:size=8:antialias=false;1"
 
 modules-left = i3 cpu temperature memory filesystem
-modules-center = backlight music volume date
+modules-center = backlight  volume date mpd
 modules-right = bumblebee redshift xkeyboard battery updates powermenu
 
 tray-position = right
@@ -317,6 +317,26 @@ label = %date% %time%
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 [module/bumblebee]
 type = custom/script
 interval = 4
@@ -441,7 +461,7 @@ type = custom/script
 interval = 2
 
 label = %output:0:45:...%
-;exec = ~/.config/polybar/custom/mpris.sh
+exec = ~/.config/polybar/custom/mpris.sh
 
 
 
