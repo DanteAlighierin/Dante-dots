@@ -2,7 +2,7 @@
 
 ### Font
 
-font pango:monospace 8
+font pango:ibm plex mono 8
 # font pango:Hack, Awesome 8
 # font pango:DejaVu Sans Mono 8
 
@@ -426,7 +426,7 @@ bindsym $mod+Shift+g mode "$mode_gaps"
 position top
 
 strip_workspace_numbers yes
-        font pango:Hack, FontAwesome 10
+        font pango:ibm plex mono, FontAwesome 10
       	colors {
           		background #524D53
           		separator  #F7E7DA
