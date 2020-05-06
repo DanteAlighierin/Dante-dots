@@ -5,9 +5,11 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "mono:pixelsize=14:antialias=true:autohint=true";
+
+static char *font = "Hack:pixelsize=15:antialias=true:autohint=true";
 static char *font2[] = { "JoyPixels:pixelsize=10:antialias=true:autohint=true" };
-static int borderpx = 2;
+static int borderpx = 4;
+
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -95,31 +97,45 @@ float alpha = 0.92;
 
 
 
-
-
-static const char *colorname[] = {
-  "#2e3440", /* base00 */
-  "#88c0d0", /* base08 */
-  "#bf616a", /* base0B */
-  "#5e81ac", /* base0A */
-  "#ebcb8b", /* base0D */
-  "#a3be8c", /* base0E */
-  "#d08770", /* base0C */
-  "#e5e9f0", /* base05 */
-  "#4c566a", /* base03 */
-  "#81a1c1", /* base09 */
-  "#3b4252", /* base01 */
-  "#434c5e", /* base02 */
-  "#d8dee9", /* base04 */
-  "#eceff4", /* base06 */
-  "#b48ead", /* base0F */
-  "#8fbcbb", /* base07 */
+const char *colorname[] = {
+  "#3b4252", /*  0: nord1 */
+  "#bf616a", /*  1: nord11 */
+  "#a3be8c", /*  2: nord14 */
+  "#ebcb8b", /*  3: nord13 */
+  "#81a1c1", /*  4: nord9 */
+  "#b48ead", /*  5: nord15 */
+  "#88c0d0", /*  6: nord8 */
+  "#e5e9f0", /*  7: nord5 */
+  "#4c566a", /*  8: nord3 */
+  "#bf616a", /*  9: nord11 */
+  "#a3be8c", /* 10: nord14 */
+  "#ebcb8b", /* 11: nord3 */
+  "#81a1c1", /* 12: nord9 */
+  "#b48ead", /* 13: nord15 */
+  "#8fbcbb", /* 14: nord7 */
+  "#eceff4", /* 15: nord6 */
+  [255] = 0,
+  // defaults
+  [256] = "#d8dee9", /* 256: nord4 */
+  [257] = "#2e3440", /* 257: nord0 */
 };
 
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
-static unsigned int defaultcs = 13;
-static unsigned int defaultrcs = 0;
+/*
+* Default colors (colorname index)
+* foreground, background, cursor, reverse
+* cursor
+*/
+unsigned int defaultfg = 256; /* nord4 */
+unsigned int defaultbg = 257; /* nord0 */
+unsigned int defaultcs = 256; /* nord4 */
+unsigned int defaultrcs = 8;  /* nord3 */
+
+
+
+
+
+
+
 /*
  * Default shape of cursor
  * 2: Block ("█")
