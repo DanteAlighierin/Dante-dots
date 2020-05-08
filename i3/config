@@ -81,9 +81,6 @@ set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 
-### Background
-
-exec_always --no-startup-id feh --bg-fill $wallpaper
 
 ### Windows specials rules
 
