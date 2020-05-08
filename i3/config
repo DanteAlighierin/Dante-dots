@@ -10,7 +10,6 @@ font pango:ibm plex mono 8
 
 set $mod Mod4
 set $volMod 2
-#set $screenpath ~/Pictures/Screenshots/
 
 
 exec --no-startup-id nitrogen --restore
@@ -88,10 +87,6 @@ for_window [urgent=latest] focus
 
 bindsym $mod+c exec chromium --force-dark-mode --enable-features=WebUIDarkMode
 bindsym $mod+l exec --no-startup-id $sys lock
-bindsym $mod+x exec keepassxc
-bindsym $mod+p exec pavucontrol -t 3
-bindsym $mod+e exec nautilus
-bindsym $mod+Tab exec --no-startup-id $layout
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id $sound up $volMod
