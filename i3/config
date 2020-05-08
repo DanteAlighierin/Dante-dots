@@ -86,7 +86,7 @@ for_window [urgent=latest] focus
 ### Custom keybind
 
 bindsym $mod+c exec chromium --force-dark-mode --enable-features=WebUIDarkMode
-bindsym $mod+l exec --no-startup-id $sys lock
+bindsym $mod+l exec --no-startup-id i3lock
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id $sound up $volMod
