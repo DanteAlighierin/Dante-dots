@@ -257,16 +257,6 @@ bindsym $mod+Shift+e exec --no-startup-id $sys logout
 gaps inner $gaps_inner
 gaps outer $gaps_outer
 
-# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
-# gaps inner|outer current|all set|plus|minus <px>
-# gaps inner all set 10
-# gaps outer all plus 5
-#
-# Smart gaps (gaps used if only more than one container on the workspace)
-# smart_gaps on
-#
-# Smart borders (draw borders around container only if it is not the only container on this workspace)
-# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
 
 ### Modes
@@ -352,35 +342,7 @@ bindsym $mod+Shift+g mode "$mode_gaps"
 ### Bar
 
 # Start i3bar to display a workspace bar
-#bar {
-        status_command i3status
-position top
-
-strip_workspace_numbers yes
-        font pango:ibm plex mono, FontAwesome 10
-      	colors {
-          		background #524D53
-          		separator  #F7E7DA
-          		statusline #524D53
-
-          		# State             Border  BG      Text
-                        focused_workspace  #5A8DBD #383134
-                        active_workspace   #5A8DBD #383134
-                        inactive_workspace #A9B8B5 #616D59
-                        urgent_workspace   #E93E38 #383134      	
-}
-}
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
 
-### Startup
-#exec --no-startup-id owncloud &
-# exec --no-startup-id volctl &
-# exec --no-startup-id nm-applet --no-agent
-#exec --no-startup-id compton -b
-#exec --no-startup-id slack &
-# Annoying when watching a video for example
-# exec --no-startup-id xautolock -time 10 -locker $sys &
-#exec --no-startup-id redshift-gtk &
-#exec --no-startup-id dunst &
