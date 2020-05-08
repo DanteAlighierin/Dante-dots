@@ -114,9 +114,6 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id $sound up $volMod
 bindsym XF86AudioLowerVolume exec --no-startup-id $sound down $volMod
 bindsym XF86AudioMute exec --no-startup-id $sound mute
 
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10; notify-send 'Brightness up (+10)'"
-bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10; notify-send 'Brightness down (-10)'"
 
 # Touchpad controls
 # bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
