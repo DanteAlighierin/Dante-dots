@@ -44,17 +44,6 @@ set $base0D #EBCB8B
 set $base0E #A3BE8C
 set $base0F #B48EAD
 
-# Workspaces
-#set $WS1 "1"
-#set $WS2 "2"
-#set $WS3 "3"
-#set $WS4 "4"
-#set $WS5 "5"
-#set $WS6 "6"
-#set $WS7 "7"
-#set $WS8 "8"
-#set $WS9 "9"
-#set $WS10 "10"
 
 set $ws1 1: <span color="#F7E7DA">Chromium: </span>
 set $ws2 2: <span color="#F7E7DA">Firefox: </span>
@@ -115,8 +104,6 @@ bindsym XF86AudioLowerVolume exec --no-startup-id $sound down $volMod
 bindsym XF86AudioMute exec --no-startup-id $sound mute
 
 
-# Touchpad controls
-# bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
 bindsym XF86AudioPlay exec --no-startup-id playerctl play
