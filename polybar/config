@@ -304,8 +304,8 @@ type = internal/date
 interval = 5
 
 
-time =  %d/%m/%Y |  %H:%M:%S
-time-alt = %H:%M:%S
+time =  %d/%m/%Y |  %H:%M
+time-alt = %H:%M
 
 format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
