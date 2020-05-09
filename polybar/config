@@ -69,7 +69,7 @@ module-margin-right = 2
 
 font-0 = Hack:style=bold:pixelsize=7.5;1
 font-1 = "NotoSans-Regular:size=8:antialias=false;2"
-font-2 = "FontAwesome:size=8:antialias=false;3"
+font-2 = "FontAwesome:size=10:antialias=false;3"
 
 modules-left = i3 cpu temperature memory filesystem
 modules-center = backlight  volume date mpd
@@ -303,13 +303,11 @@ format-disconnected =
 type = internal/date
 interval = 5
 
-date = " %d.%m.%Y |"
-date-alt = " %Y-%m-%d"
 
-time = %H:%M
+time =  %d/%m/%Y |  %H:%M:%S
 time-alt = %H:%M:%S
 
-format-prefix = 
+format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
 
 
