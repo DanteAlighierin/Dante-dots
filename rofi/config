@@ -1,6 +1,0 @@
-
- */
-configuration {
-    show-icons: true;
-    icon-theme: "MY_ICON_THEME";
-rofi.theme: /usr/share/rofi/themes/dark-paper.rasi
