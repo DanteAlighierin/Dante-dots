@@ -9,7 +9,7 @@ host="$(hostname)"
 os='void'
 libc=' musl'
 kernel="$(uname -sr)"
-packages="$(xbps-query -l | wc -l)"
+packages="    $(xbps-query -l | wc -l)"
 shell="$(basename "$SHELL")"
 wm='    sway'
 
@@ -66,11 +66,11 @@ c1="${reset}${green}"               # second color
 cat <<EOF
 
 ${c0}      _______      ${nc}${USER}${ic}@${nc}${host}${reset}
-${c1}      ${c0}\_____ \`-    ${lc}OS:        ${ic}${os}${reset}
-${c1}   /\   ${c0}___ \`- \   ${lc}KERNEL:    ${ic}${kernel}${reset}
-${c1}  | |  ${c0}/   \  | |  ${lc}WM:    ${ic}${wm}${reset}
-${c1}  | |  ${c0}\___/  | |  ${lc}PACKAGES:  ${ic}${packages}${reset}
-${c1}   \ \`-_____  ${c0}\/   ${lc}SHELL:     ${ic}${shell}${reset}
-${c1}    \`-______\ ${c0}\/   ${c1}LIBC:     ${ic}${libc}${reset}
+${c1}      ${c0}\_____ \`-    ${lc}os:        ${ic}${os}${reset}
+${c1}   /\   ${c0}___ \`- \   ${lc}kernel:    ${ic}${kernel}${reset}
+${c1}  | |  ${c0}/   \  | |  ${lc}wm:    ${ic}${wm}${reset}
+${c1}  | |  ${c0}\___/  | |  ${lc}pkgs:  ${ic}${packages}${reset}
+${c1}   \ \`-_____  ${c0}\/   ${lc}shell:     ${ic}${shell}${reset}
+${c1}    \`-______\ ${c0}   ${c1}  libc:     ${ic}${libc}${reset}
 
 EOF
