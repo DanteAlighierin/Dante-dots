@@ -18,7 +18,7 @@ set $right l
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | rofi -show run | xargs swaymsg exec --
+set $menu dmenu_path | wofi --show run
 
 ### Output configuration
 #
@@ -30,7 +30,7 @@ set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Nordic'
-    gsettings set $gnome-schema icon-theme 'Nordic'
+    gsettings set $gnome-schema icon-theme 'la-capitaine-icon-theme'
     gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
     gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
 }
@@ -249,9 +249,10 @@ set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
+for_window [app_id="mako"] floating enable
+
 
 default_floating_border none #floating none borders
-new_window none #newe window none border
 hide_edge_borders none #you understand it!
 
 # Change borders
