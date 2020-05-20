@@ -30,7 +30,7 @@ set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Nordic'
-    gsettings set $gnome-schema icon-theme 'la-capitaine-icon-theme'
+    gsettings set $gnome-schema icon-theme 'nord'
     gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
     gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
 }
@@ -214,11 +214,10 @@ input * {
 }
 
 
-bindsym Print exec sh ~/screenshot.sh
+bindsym Print exec sh screenshot.sh
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 bindsym $mod+g mode "$mode_gaps"
-
 
 ### Palette
 set $black    #3b4252 
