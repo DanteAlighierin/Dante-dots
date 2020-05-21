@@ -250,7 +250,7 @@ set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 for_window [app_id="mako"] floating enable
 
-
+default_border pixel none
 default_floating_border none #floating none borders
 hide_edge_borders none #you understand it!
 
