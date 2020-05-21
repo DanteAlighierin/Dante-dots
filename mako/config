@@ -1,6 +1,6 @@
 font=Iosevka Extended Medium 10
 icons=1
-default-timeout=50000
+default-timeout=5
 max-visible=3
 background-color=#2E3440
 border-radius=7
