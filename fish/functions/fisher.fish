@@ -433,3 +433,14 @@ function _fisher_now -a elapsed
             math (command date "+%s%3N") - "0$elapsed"
     end
 end
+
+
+# sway
+if [ "$(tty)" = "/dev/tty1" ]; then
+  export XDG_SESSION_TYPE=wayland
+  export QT_WAYLAND_FORCE_DPI=physical
+  export QT_QPA_PLATFORM=wayland-egl
+  export BEMENU_BACKEND=wayland
+  export GDK_BACKEND=wayland
+fi
+
