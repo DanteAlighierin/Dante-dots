@@ -3,7 +3,7 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
-# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -14,27 +14,40 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-
+set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | wofi --show run
+set $menu wofi  --show run
+#set $menu exec ~/.config/waybar/scripts/wofi.sh
+# set $menu nwggrid -l us
+# Status Bar
+
+#bar {
+#    position top
+#    font "JetBrainsMono Nerd Font Mono 10"
+#    status_command while ~/.config/sway/scripts/sway_bar.sh; do sleep 1; done
+#
+#    colors {
+#        statusline #222322
+#        background #f0732d
+#        #background #222322
+#        focused_workspace #222322 #222322 #f0732d
+#	    inactive_workspace #f0732d #f0732d #222322
+#        active_workspace #f0732d #f0732d #222322
+#	    urgent_workspace #eb709b #eb709b #222322
+#    }
+#}
+
+font pango:monospace 9
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/dante/wall.png fill
+output * bg ~/.config/sway/images/wallpaper.png fill
+# exec ~/.config/sway/scripts/wallpaper_change.sh
 
-# Gtk theme
-set $gnome-schema org.gnome.desktop.interface
-
-exec_always {
-    gsettings set $gnome-schema gtk-theme 'Nordic'
-    gsettings set $gnome-schema icon-theme 'nord'
-    gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
-    gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
-}
-
+# Clamshell Mode
 
 #
 # Example configuration:
@@ -47,27 +60,25 @@ exec_always {
 #
 # Example configuration:
 #
-# exec swayidle -w \
+#exec swayidle -w \
 #          timeout 300 'swaylock -f -c 000000' \
 #          timeout 600 'swaymsg "output * dpms off"' \
 #               resume 'swaymsg "output * dpms on"' \
 #          before-sleep 'swaylock -f -c 000000'
-#
+
+# bindsym Control+$mod+l exec "swaylock -f -i ~/.config/sway/images/wallpaper.png --indicator-idle-visible --disable-caps-lock-text --font Cantarell --font-size 12 --inside-color 00000000 --text-color 00000000 --text-ver-color 00000000 --text-wrong-color 00000000 --inside-ver-color 00000000 --inside-wrong-color 00000000 --separator-color 00000000 --line-color 00000000 --line-clear-color 00000000 --line-wrong-color 00000000 --line-ver-color 00000000 --ring-color 464853 --ring-ver-color 5294e2 --key-hl-color 5294e2 --ring-wrong-color ee4934"
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
+
+input * {
+    xkb_layout us,ru
+    xkb_options grp:alt_shift_toggle
+}
+
+
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
@@ -79,10 +90,13 @@ exec_always {
     bindsym $mod+Return exec env WINIT_UNIX_BACKEND=x11 alacritty
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+q kill
+
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+Space exec wofi --show run
+    # bindsym $mod+Tab exec rofi -font "JetBrainsMono Nerd Font Mono 10" -show window
+    # bindsym $mod+Tab exec
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -91,11 +105,23 @@ exec_always {
     # mouse button for dragging.
     floating_modifier $mod normal
 
+    # This is for setting brightness
+
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym Control+$mod+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    # bindsym Control+$mod+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    # bindsym Control+$mod+e exec nwgbar
+    # Take screenshot
+
+
+# capture the specified screen area to clipboard    
+   bindsym Print exec grim -g "$(slurp)" - | wl-copy    
+#
+
+
+
 #
 # Moving around:
 #
@@ -133,7 +159,6 @@ exec_always {
     bindsym $mod+7 workspace 7
     bindsym $mod+8 workspace 8
     bindsym $mod+9 workspace 9
-    bindsym $mod+0 workspace 10
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace 1
     bindsym $mod+Shift+2 move container to workspace 2
@@ -144,7 +169,6 @@ exec_always {
     bindsym $mod+Shift+7 move container to workspace 7
     bindsym $mod+Shift+8 move container to workspace 8
     bindsym $mod+Shift+9 move container to workspace 9
-    bindsym $mod+Shift+0 move container to workspace 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
@@ -157,7 +181,7 @@ exec_always {
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    bindsym $mod+a layout stacking
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
@@ -165,14 +189,15 @@ exec_always {
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym Control+$mod+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym Control+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+a focus parent
+    bindsym $mod+shift+a focus parent
 #
+exec "wal -r"
 # Scratchpad:
 #
     # Sway has a "scratchpad", which is a bag of holding for windows.
@@ -187,7 +212,7 @@ exec_always {
 #
 # Resizing containers:
 #
-mode "resize" {
+mode "Resize" {
     # left will shrink the containers width
     # right will grow the containers width
     # up will shrink the containers height
@@ -207,116 +232,46 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
-input * {
-	xkb_layout us,ru
-	xkb_options grp:alt_shift_toggle
+
+mode "Logout" {
+    bindsym q exec doas poweroff
+    bindsym w exec doas reboot
+    bindsym e exec swaymsg exit
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
-
-bindsym Print exec sh screenshot.sh
-# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
-bindsym $mod+g mode "$mode_gaps"
-
-### Palette
-set $black    #3b4252 
-set $gray     #d8dee9
-set $lred     #bf616a
-set $blue     #5e81ac
-set $lblue    #88c0d0
-set $white    #eceff4
-set $yellow   #ebcb8b
-
-# Color                 border    background text    indicator  child_border
-client.focused          $yellow   $blue      $gray   $yellow     $yellow
-client.focused_inactive $white    $black     $gray   $gray      $gray
-client.unfocused        $black    $black     $gray   $black     $blue
-client.urgent           $lred     $black     $gray   $lred      $lblue
-
-
-# Gaps
-set $gaps_inner 10
-set $gaps_outer -2
-
-# Modes
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) shutdown
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-
-
-
-# Configure border style <normal|1pixel|pixel xx|none|pixel>
-for_window [app_id="mako"] floating enable
-
-default_border pixel none
-default_floating_border none #floating none borders
-hide_edge_borders none #you understand it!
-
-# Change borders
-bindsym $mod+u border none
-bindsym $mod+y border pixel 1
-bindsym $mod+n border normal
-
-# Set inner/outer gaps
-gaps inner $gaps_inner
-gaps outer $gaps_outer
-
-smart_borders on
-# Gaps modes
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-
-
+bindsym $mod+r mode "Resize"
+bindsym Control+$mod+e exec notify-send "End session" "Press Q to poweroff, W to reboot, E to logout, or Esc to cancel." && swaymsg mode Logout
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
+#bar {
+#    position top
+#
+#    # When the status_command prints a new line to stdout, swaybar updates.
+#    # The default just shows the current date and time.
+#    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+#
+#    colors {
+#        statusline #ffffff
+#        background #323232
+#        inactive_workspace #32323200 #32323200 #5c5c5c
+#    }
+#}
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+gaps inner 6
+gaps outer 3
+# border / titlebar
+default_border pixel
+for_window [app_id="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 2
+for_window [class="Gimp"] floating enable
 
-    colors {
+client.focused              #d8d8d8 #d8d8d8 #373b41 #d8d8d8 #d8d8d8
+client.unfocused            #373b41 #373b41 #d8d8d8 #373b41 #373b41
+client.focused_inactive     #373b41 #373b41 #d8d8d8 #373b41 #373b41
 
-
-separator #eceff4
-        background #3b4252
-        focused_workspace #81a1c1 #81a1c1 #eceff4
-        active_workspace #8fbcbb #8fbcbb #eceff4
-        inactive_workspace #4c566a #4c566a  #eceff4
-        urgent_workspace #bf616a #bf616a #ffffff 
-
-   }
-}
 
 include /etc/sway/config.d/*
