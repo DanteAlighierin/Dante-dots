@@ -8,6 +8,7 @@ if test -z "$DISPLAY"; and test $TTY1 = "/dev/tty1"
     
 end
 mkdir -p /tmp/swaytmp
+cat /home/dante/.cache/wal/sequences
 chmod 0700 /tmp/swaytmp
 set -x XDG_RUNTIME_DIR /tmp/swaytmp
 set -x XDG_CONFIG_HOME $HOME/.config
