@@ -1,2 +1,17 @@
 # Dante-dots
-My own configs for any elements of Linux desktop(such as i3wm, i3status, neofetch  e.t.c)
+
+OS: void(musl)
+WM: sway
+bar: waybar
+shell: fish, bash and dash
+editor: neovim, libreoffice
+browser: chromium and firefox
+fm: pcmanfm and krusader
+audio: alsa as backend; vlc
+messages: kotatogram
+task manager: htop
+markdown editor: ghostwriter
+android sync: kdeconnect
+file sync: syncthing
+copy/past buffer: slurp and grip
+notification manager: mako
