@@ -49,6 +49,22 @@ output * bg ~/.config/sway/images/wallpaper.png fill
 
 # Clamshell Mode
 
+
+
+
+
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Breeze-Dark'
+    gsettings set $gnome-schema icon-theme 'Adwaita'
+}
+
+
+
+
+
+
 #
 # Example configuration:
 #
@@ -87,14 +103,14 @@ input * {
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec env WINIT_UNIX_BACKEND=x11 alacritty
+    bindsym $mod+Return exec foot
 
     # Kill focused window
     bindsym $mod+q kill
 
 
     # Start your launcher
-    bindsym $mod+Space exec wofi --show run
+    bindsym $mod+Space exec bemenu-run -b
     # bindsym $mod+Tab exec rofi -font "JetBrainsMono Nerd Font Mono 10" -show window
     # bindsym $mod+Tab exec
 
@@ -120,7 +136,7 @@ input * {
    bindsym Print exec grim -g "$(slurp)" - | wl-copy    
 #
 
-
+   
 
 #
 # Moving around:
