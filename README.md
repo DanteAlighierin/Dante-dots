@@ -2,15 +2,19 @@
 
 - OS: void(musl)
 - WM: sway
-- bar: waybar
-- shell: fish, bash and dash
-- editor: neovim, libreoffice
-- browser: chromium and firefox
-- fm: pcmanfm and krusader
-- audio: alsa as backend; vlc
-- messages: kotatogram
--task manager: htop
--markdown editor: ghostwriter
--android sync: kdeconnect
+- bar: swaybar
+- shell: fish(main), bash and dash
+- editor: (neovim)[https://github.com/jdhao/minimal_vim], libreoffice
+- browser: chromium and firefox(main)
+- fm: nnn(cli) and nemo(gui)
+- audio: alsa as backend, vlc
+
+- task manager: htop
+
+- markdown editor: ghostwriter and ReText
+
+- android sync: kdeconnect
+
 - copy/past buffer: slurp and grip
+
 - notification manager: mako
