@@ -14,11 +14,11 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term xfce4-terminal
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi  --show run
+set $menu dmenu_run
 #set $menu exec ~/.config/waybar/scripts/wofi.sh
 # set $menu nwggrid -l us
 # Status Bar
@@ -44,7 +44,8 @@ font pango:monospace 9
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/.config/sway/images/wallpaper.png fill
+output * bg images/wallpaper.png fill
+#output * bg ~/.config/sway/images/wallpaper.png fill
 # exec ~/.config/sway/scripts/wallpaper_change.sh
 
 # Clamshell Mode
@@ -56,8 +57,8 @@ output * bg ~/.config/sway/images/wallpaper.png fill
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Breeze-Dark'
-    gsettings set $gnome-schema icon-theme 'Adwaita'
+    gsettings set $gnome-schema gtk-theme 'monokai-gtk'
+    gsettings set $gnome-schema icon-theme 'la-capitaine-icon-theme'
 }
 
 
@@ -103,14 +104,15 @@ input * {
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec foot
+    bindsym $mod+Return exec xfce4-terminal
 
     # Kill focused window
     bindsym $mod+q kill
-
+    
+    bindsym $mod+z exec swaylock
 
     # Start your launcher
-    bindsym $mod+Space exec bemenu-run -b
+    bindsym $mod+Space exec dmenu_run
     # bindsym $mod+Tab exec rofi -font "JetBrainsMono Nerd Font Mono 10" -show window
     # bindsym $mod+Tab exec
 
@@ -135,7 +137,7 @@ input * {
 # capture the specified screen area to clipboard    
    bindsym Print exec grim -g "$(slurp)" - | wl-copy    
 #
-
+   
    
 
 #
@@ -213,7 +215,7 @@ input * {
     # Move focus to the parent container
     bindsym $mod+shift+a focus parent
 #
-exec "wal -r"
+
 # Scratchpad:
 #
     # Sway has a "scratchpad", which is a bag of holding for windows.
@@ -277,15 +279,31 @@ bindsym Control+$mod+e exec notify-send "End session" "Press Q to poweroff, W to
 #    }
 #}
 
-gaps inner 6
-gaps outer 3
+
+
+#bar
+bar {
+     position top
+     binding_mode_indicator yes
+     status_command while date +'%l:%M:%S %p'; do sleep 1; done
+     font monospace 11
+		 colors {
+         statusline #d8d8d8
+		     background #000000
+		     active_workspace #00FFFF #000000 #ffffff
+		     inactive_workspace #333333 #000000 #888888    
+
+}
+     }
+
+
 # border / titlebar
 default_border pixel
 for_window [app_id="^.*"] border pixel 2
 for_window [class="^.*"] border pixel 2
 for_window [class="Gimp"] floating enable
 
-client.focused              #d8d8d8 #d8d8d8 #373b41 #d8d8d8 #d8d8d8
+client.focused              #ffffff #ffffff #ffffff #ffffff #ffffff
 client.unfocused            #373b41 #373b41 #d8d8d8 #373b41 #373b41
 client.focused_inactive     #373b41 #373b41 #d8d8d8 #373b41 #373b41
 
