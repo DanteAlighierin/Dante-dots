@@ -1,6 +1,6 @@
 # Dante-dots
 
-![](./photo_2020-10-01_22-52-23.jpg)
+![](./screen.png)
 
 - OS: void(musl)
 - WM: sway
