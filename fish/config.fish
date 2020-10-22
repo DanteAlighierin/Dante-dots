@@ -12,7 +12,6 @@ cat /home/dante/.cache/wal/sequences
 chmod 0700 /tmp/swaytmp
 set -x XDG_RUNTIME_DIR /tmp/swaytmp
 set -x XDG_CONFIG_HOME $HOME/.config
-set -x PATH $PATH /home/lemniskett/.cargo/bin /home/lemniskett/.local/share/bin /home/lemniskett/.local/bin/ .
 set -x XDG_CACHE_HOME $HOME/.cache
 set -x XDG_DATA_HOME $HOME/.local/share
 set -x XDG_CURRENT_DESKTOP Unity
