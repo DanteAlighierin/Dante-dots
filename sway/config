@@ -14,11 +14,11 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term xfce4-terminal
+set $term st
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_run
+set $menu bemenu_run -b
 #set $menu exec ~/.config/waybar/scripts/wofi.sh
 # set $menu nwggrid -l us
 # Status Bar
@@ -57,7 +57,7 @@ output * bg images/wallpaper.png fill
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'monokai-gtk'
+    gsettings set $gnome-schema gtk-theme 'Adapta-Nokto-Eta'
     gsettings set $gnome-schema icon-theme 'la-capitaine-icon-theme'
 }
 
@@ -104,7 +104,7 @@ input * {
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec xfce4-terminal
+    bindsym $mod+Return exec st
 
     # Kill focused window
     bindsym $mod+q kill
@@ -112,7 +112,7 @@ input * {
     bindsym $mod+z exec swaylock
 
     # Start your launcher
-    bindsym $mod+Space exec dmenu_run
+    bindsym $mod+Space exec bemenu-run -b
     # bindsym $mod+Tab exec rofi -font "JetBrainsMono Nerd Font Mono 10" -show window
     # bindsym $mod+Tab exec
 
@@ -129,8 +129,8 @@ input * {
     bindsym Control+$mod+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    # bindsym Control+$mod+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-    # bindsym Control+$mod+e exec nwgbar
+    #bindsym Control+$mod+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+     #bindsym Control+$mod+e exec nwgbar
     # Take screenshot
 
 
@@ -302,6 +302,17 @@ default_border pixel
 for_window [app_id="^.*"] border pixel 2
 for_window [class="^.*"] border pixel 2
 for_window [class="Gimp"] floating enable
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
+
+
+
 
 client.focused              #ffffff #ffffff #ffffff #ffffff #ffffff
 client.unfocused            #373b41 #373b41 #d8d8d8 #373b41 #373b41
