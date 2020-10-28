@@ -104,7 +104,7 @@ input * {
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec st
+    bindsym $mod+Return exec  st -f "firacode:pixelsize=14:antialias=true:autohint=true"
 
     # Kill focused window
     bindsym $mod+q kill
