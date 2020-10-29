@@ -1,14 +1,25 @@
-font=Ubuntu 10
-width=300
-padding=10
-margin=3
-border-size=1
-border-radius=2
-default-timeout=5000
+## Default Mako Config
 
-background-color=#ffffff
-border-color=#DCDCDC
-text-color=#282a33
-
-[urgency=high]
 ignore-timeout=1
+
+default-timeout=10000
+
+anchor=top-right
+
+max-visible=7
+
+
+
+font=firacode 9
+
+border-size=3
+
+background-color=#000000
+
+border-color=#E6E6FA
+
+margin=10
+
+padding=15
+
+width=350
