@@ -104,7 +104,7 @@ input * {
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec  st -f "firacode:pixelsize=14:antialias=true:autohint=true"
+    bindsym $mod+Return exec  st -f "firacode:pixelsize=18:antialias=true:autohint=true"
 
     # Kill focused window
     bindsym $mod+q kill
@@ -284,16 +284,16 @@ bindsym Control+$mod+e exec notify-send "End session" "Press Q to poweroff, W to
 #bar
 bar {
      position top
-     binding_mode_indicator yes
-     status_command while date +'%l:%M:%S %p'; do sleep 1; done
-     font monospace 11
-		 colors {
-         statusline #d8d8d8
-		     background #000000
-		     active_workspace #00FFFF #000000 #ffffff
-		     inactive_workspace #333333 #000000 #888888    
+#     binding_mode_indicator yes
+ #    status_command while date +'%l:%M:%S %p'; do sleep 1; done; center
+  #   font firacode 11
+#		 colors {
+ #        statusline #d8d8d8
+#		     background #000000
+##		     active_workspace #00FFFF #000000 #ffffff
+#		     inactive_workspace #333333 #000000 #888888    
+       swaybar_command waybar
 
-}
      }
 
 
