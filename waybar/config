@@ -1,0 +1,72 @@
+{
+
+    "layer": "top",
+
+    "modules-left": ["sway/workspaces", "sway/window", "sway/mode"],
+
+    "modules-center": [ "custom/selftime"],
+
+    "modules-right": ["custom/weather", "custom/lang", "network","tray"],
+
+    "sway/window": {
+        "format": "{}",
+        "max-length": 30
+
+    },
+
+    "custom/lang": {
+    	"exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
+
+      // Interval set only as a fallback, as the value is updated by signal
+
+      "interval": 1,
+
+      "format": "   {}", // Icon: keyboard
+
+      // Signal sent by Sway key binding (~/.config/sway/key-bindings)
+
+      "signal": 1, // SIGHUP
+
+      "tooltip": false
+      },
+
+    "custom/selftime": {
+    	
+	"exec": "date '+%Y.%m.%d %A %l:%M'",
+    	"interval":60
+    },
+
+    "custom/weather": {
+
+    "exec": "curl 'https://wttr.in/?format=1'",
+
+    "interval": 60
+
+  },
+
+
+
+    "tray": {
+
+    "icon-size": 21,
+
+    "spacing": 10
+
+},
+
+    
+
+
+	"network": {
+
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+
+        
+
+        "format-ethernet": "",
+
+        "format-disconnected": "Disconnected ⚠"
+	}
+
+
+}
