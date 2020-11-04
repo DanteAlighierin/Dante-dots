@@ -50,14 +50,14 @@ output * bg images/wallpaper.png fill
 
 # Clamshell Mode
 
-
+exec 'sudo wg-quick up wg0'
 
 
 
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Adapta-Nokto-Eta'
+    gsettings set $gnome-schema gtk-theme 'Mojave-dark'
     gsettings set $gnome-schema icon-theme 'la-capitaine-icon-theme'
 }
 
