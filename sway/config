@@ -50,7 +50,7 @@ output * bg images/wallpaper.png fill
 
 # Clamshell Mode
 
-exec 'sudo wg-quick up wg0'
+exec_always --no-startup-id sudo wg-quick up wg0
 
 
 
@@ -109,7 +109,7 @@ input * {
     # Kill focused window
     bindsym $mod+q kill
     
-    bindsym $mod+z exec swaylock
+    bindsym $mod+z exec python3 ~/dotfiles/sway/swaylock/lock.py
 
     # Start your launcher
     bindsym $mod+Space exec bemenu-run -b
