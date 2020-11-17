@@ -17,6 +17,7 @@
   "custom/vpn": {
 
     "format": "VPN ",
+    "on-click": " /home/dante/DanteDots/wg.sh"
 
   },
 
