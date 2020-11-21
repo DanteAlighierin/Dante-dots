@@ -109,7 +109,7 @@ input * {
     # Kill focused window
     bindsym $mod+q kill
     
-    bindsym $mod+z exec python3 ~/dotfiles/sway/swaylock/lock.py
+    bindsym $mod+z exec nwgbar
 
     # Start your launcher
     bindsym $mod+Space exec bemenu-run -b
