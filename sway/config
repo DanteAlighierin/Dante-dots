@@ -44,7 +44,12 @@ font pango:monospace 9
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg images/wallpaper.png fill
+
+set $wallpapers_path $HOME/dotfiles/sway/images/home/bs/Pictures/wall
+
+output * bg `find $wallpapers_path -type f | shuf -n 1` fill
+
+#output * bg images/wallpaper.png fill
 #output * bg ~/.config/sway/images/wallpaper.png fill
 # exec ~/.config/sway/scripts/wallpaper_change.sh
 
@@ -105,6 +110,7 @@ input * {
 #
     # Start a terminal
     bindsym $mod+Return exec  st -f "firacode:pixelsize=18:antialias=true:autohint=true"
+    
 
     # Kill focused window
     bindsym $mod+q kill
@@ -112,7 +118,7 @@ input * {
     bindsym $mod+z exec nwgbar
 
     # Start your launcher
-    bindsym $mod+Space exec bemenu-run -b
+    bindsym $mod+Space exec bemenu-run -b -i
     # bindsym $mod+Tab exec rofi -font "JetBrainsMono Nerd Font Mono 10" -show window
     # bindsym $mod+Tab exec
 
