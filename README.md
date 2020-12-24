@@ -18,8 +18,8 @@ I can change the wallpaper without any problems and change the color scheme in t
 - terminal: st
 - browser: IceCat
 - fm: ranger(cli) and qtfm(gui)
-- audio: alsa as backend, cmus
+- audio: alsa as backend, cmus, mpv for [SomaFM](https://github.com/MS3FGX/SomaFM)
 - task manager: htop
-- markdown editor: ghostwriter and ReText
+- markdown editor: ReText
 - screenshot app: slurp and grip
 - notification manager: mako
