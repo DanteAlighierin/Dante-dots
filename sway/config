@@ -1,65 +1,40 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
 ### Variables
-#
-# Logo key. Use Mod1 for Alt.
+
+# Modifer
 set $mod Mod4
+
+
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
+
+
 # Your preferred terminal emulator
 set $term st
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
+
+
+# Preferred menu
 set $menu bemenu_run -b
-#set $menu exec ~/.config/waybar/scripts/wofi.sh
-# set $menu nwggrid -l us
-# Status Bar
 
-#bar {
-#    position top
-#    font "JetBrainsMono Nerd Font Mono 10"
-#    status_command while ~/.config/sway/scripts/sway_bar.sh; do sleep 1; done
-#
-#    colors {
-#        statusline #222322
-#        background #f0732d
-#        #background #222322
-#        focused_workspace #222322 #222322 #f0732d
-#	    inactive_workspace #f0732d #f0732d #222322
-#        active_workspace #f0732d #f0732d #222322
-#	    urgent_workspace #eb709b #eb709b #222322
-#    }
-#}
 
-font pango:monospace 9
+## Font
+font pango:firacode 9
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 
+# Wallpaper
 set $wallpapers_path $HOME/dotfiles/sway/images/home/bs/Pictures/wall
 
 output * bg `find $wallpapers_path -type f | shuf -n 1` fill
 
-#output * bg images/wallpaper.png fill
-#output * bg ~/.config/sway/images/wallpaper.png fill
-# exec ~/.config/sway/scripts/wallpaper_change.sh
 
-# Clamshell Mode
-
+# Run VPN
 exec_always --no-startup-id sudo wg-quick up wg0
 
-
-
+# GTK theme
 set $gnome-schema org.gnome.desktop.interface
+
 
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Mojave-dark'
@@ -67,88 +42,46 @@ exec_always {
 }
 
 
-
-
-
-
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Idle configuration
-#
-# Example configuration:
-#
-#exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' \
-#               resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-
-# bindsym Control+$mod+l exec "swaylock -f -i ~/.config/sway/images/wallpaper.png --indicator-idle-visible --disable-caps-lock-text --font Cantarell --font-size 12 --inside-color 00000000 --text-color 00000000 --text-ver-color 00000000 --text-wrong-color 00000000 --inside-ver-color 00000000 --inside-wrong-color 00000000 --separator-color 00000000 --line-color 00000000 --line-clear-color 00000000 --line-wrong-color 00000000 --line-ver-color 00000000 --ring-color 464853 --ring-ver-color 5294e2 --key-hl-color 5294e2 --ring-wrong-color ee4934"
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
 ### Input configuration
-
 input * {
     xkb_layout us,ru
     xkb_options grp:alt_space_toggle
 }
 
 
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-
 ### Key bindings
-#
 # Basics:
-#
     # Start a terminal
     bindsym $mod+Return exec  st -f "firacode:pixelsize=18:antialias=true:autohint=true"
-    
+
 
     # Kill focused window
     bindsym $mod+q kill
-    
+
+
+    #Lock/shutdown/hibernate
     bindsym $mod+z exec nwgbar
+
 
     # Start your launcher
     bindsym $mod+Space exec bemenu-run -b -i
-    # bindsym $mod+Tab exec rofi -font "JetBrainsMono Nerd Font Mono 10" -show window
-    # bindsym $mod+Tab exec
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
+
+    # Floating button
     floating_modifier $mod normal
 
-    # This is for setting brightness
 
     # Reload the configuration file
     bindsym Control+$mod+c reload
 
-    # Exit sway (logs you out of your Wayland session)
-    #bindsym Control+$mod+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-     #bindsym Control+$mod+e exec nwgbar
-    # Take screenshot
+
+   # Screenshot
+   bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
 
-# capture the specified screen area to clipboard    
-   bindsym Print exec grim -g "$(slurp)" - | wl-copy    
-#
-   
-   
 
-#
 # Moving around:
-#
+
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
@@ -170,9 +103,10 @@ input * {
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
-#
+
+
 # Workspaces:
-#
+
     # Switch to workspace
     bindsym $mod+1 workspace 1
     bindsym $mod+2 workspace 2
@@ -193,14 +127,10 @@ input * {
     bindsym $mod+Shift+7 move container to workspace 7
     bindsym $mod+Shift+8 move container to workspace 8
     bindsym $mod+Shift+9 move container to workspace 9
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-#
+
+
 # Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
+    # Mode
     bindsym $mod+b splith
     bindsym $mod+v splitv
 
@@ -220,27 +150,19 @@ input * {
 
     # Move focus to the parent container
     bindsym $mod+shift+a focus parent
-#
+
 
 # Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
     # Move the currently focused window to the scratchpad
     bindsym $mod+Shift+minus move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
-#
+
+
 # Resizing containers:
-#
 mode "Resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
@@ -257,6 +179,8 @@ mode "Resize" {
     bindsym Escape mode "default"
 }
 
+
+# Logout menu bindings
 mode "Logout" {
     bindsym q exec doas poweroff
     bindsym w exec doas reboot
@@ -265,22 +189,27 @@ mode "Logout" {
     bindsym Escape mode "default"
 }
 
+
+# Run 'resize' mode'
 bindsym $mod+r mode "Resize"
+
+
+# Logout menu
 bindsym Control+$mod+e exec notify-send "End session" "Press Q to poweroff, W to reboot, E to logout, or Esc to cancel." && swaymsg mode Logout
 
 
-#bar
+# Bar
 bar {
      position top
      swaybar_command waybar
      }
 
 
-# border / titlebar
+# border / titlebar / floating / focus
 default_border pixel
 for_window [app_id="^.*"] border pixel 2
 for_window [class="^.*"] border pixel 2
-for_window [class="Gimp"] floating enable
+#for_window [class="Gimp"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -292,18 +221,14 @@ for_window [app_id="xarchiver"] floating enable; focus
 for_window [class="xarchiver"] floating enable
 
 
-
+# Change layout mode
 exec_always ~/.local/bin/swaymgr
-
 bindsym $mod+Alt+m exec ~/.local/bin/swaymgr -s 'set manual' && exec notify-send 'manual layout'
-
 bindsym $mod+Alt+l exec ~/.local/bin/swaymgr -s 'set left'   && exec notify-send 'left layout'
-
 bindsym $mod+Alt+s exec ~/.local/bin/swaymgr -s 'set spiral' && exec notify-send 'spiral layout'
 
 
-
-
+# Border's colors
 client.focused              #ffffff #ffffff #ffffff #ffffff #ffffff
 client.unfocused            #373b41 #373b41 #d8d8d8 #373b41 #373b41
 client.focused_inactive     #373b41 #373b41 #d8d8d8 #373b41 #373b41
