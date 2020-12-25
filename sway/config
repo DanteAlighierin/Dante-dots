@@ -267,39 +267,12 @@ mode "Logout" {
 
 bindsym $mod+r mode "Resize"
 bindsym Control+$mod+e exec notify-send "End session" "Press Q to poweroff, W to reboot, E to logout, or Esc to cancel." && swaymsg mode Logout
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-#bar {
-#    position top
-#
-#    # When the status_command prints a new line to stdout, swaybar updates.
-#    # The default just shows the current date and time.
-#    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-#
-#    colors {
-#        statusline #ffffff
-#        background #323232
-#        inactive_workspace #32323200 #32323200 #5c5c5c
-#    }
-#}
-
 
 
 #bar
 bar {
      position top
-#     binding_mode_indicator yes
- #    status_command while date +'%l:%M:%S %p'; do sleep 1; done; center
-  #   font firacode 11
-#		 colors {
- #        statusline #d8d8d8
-#		     background #000000
-##		     active_workspace #00FFFF #000000 #ffffff
-#		     inactive_workspace #333333 #000000 #888888    
-       swaybar_command waybar
-
+     swaybar_command waybar
      }
 
 
@@ -319,6 +292,14 @@ for_window [app_id="xarchiver"] floating enable; focus
 for_window [class="xarchiver"] floating enable
 
 
+
+exec_always ~/.local/bin/swaymgr
+
+bindsym $mod+Alt+m exec ~/.local/bin/swaymgr -s 'set manual' && exec notify-send 'manual layout'
+
+bindsym $mod+Alt+l exec ~/.local/bin/swaymgr -s 'set left'   && exec notify-send 'left layout'
+
+bindsym $mod+Alt+s exec ~/.local/bin/swaymgr -s 'set spiral' && exec notify-send 'spiral layout'
 
 
 
