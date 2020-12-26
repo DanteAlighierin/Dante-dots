@@ -222,6 +222,8 @@ for_window [class="xarchiver"] floating enable
 for_window [class="telegram-desktop"] floating enable
 for_window [app_id="telegram-desktop"] floating enable
 for_window [app_id="telegram-desktop"] [floating] resize set 640 480
+for_window [class="icecat-wayland"] [floating] resize set 800 500
+
 
 # Change layout mode
 exec_always ~/.local/bin/swaymgr
