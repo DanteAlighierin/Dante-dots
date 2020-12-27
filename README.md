@@ -14,7 +14,7 @@ I can change the wallpaper without any problems and change the color scheme in t
 
 - bar: waybar
 - shell: fish(main), bash
-- editor: neovim
+- editor: vim
 - terminal: st
 - browser: IceCat
 - fm: ranger(cli) and qtfm(gui)
