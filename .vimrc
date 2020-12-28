@@ -19,7 +19,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'w0ng/vim-hybrid'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Utils
-"""""""""a"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""
 Plug 'preservim/nerdtree'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
@@ -64,11 +64,24 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
+""""""""""""""""""""Theme and colors"""""""""""""""""""""""""""""
 
 set background=dark
 colorscheme hybrid
 "hi Normal guibg=NONE ctermbg=NONE
 let g:neocomplcache_enable_at_startup = 1
 let g:airline_theme='bubblegum'
+syntax on
+
+""""""""""""""""""""Variables""""""""""""""""""""""""""""""""""""
+set t_Co=256
+set termencoding=utf-8
+set t_vb=
+set visualbell t_vb=
+set showtabline=1
+set encoding=utf-8
+set fileencodings=utf8,cp1251
+
+
+
 filetype plugin on
