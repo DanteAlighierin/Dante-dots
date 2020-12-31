@@ -24,7 +24,7 @@ font pango:firacode 9
 
 
 # Wallpaper
-set $wallpapers_path ~/.config/sway/images/home/bs/Pictures/wall
+set $wallpapers_path ~/.config/sway/images
 
 output * bg `find $wallpapers_path -type f | shuf -n 1` fill
 
