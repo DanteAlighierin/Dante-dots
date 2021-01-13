@@ -20,7 +20,7 @@ set -x BEMENU_BACKEND wayland
 set -x XDG_SESSION_TYPE wayland
 set -x MOZ_ACCELERATED 1
 set -x MOZ_WEBRENDER 1
-set -x GDK_BACKEND wayland 
+#set -x GDK_BACKEND wayland
 set -x QT_QPA_PLATFORM wayland-egl 
 set -x SDL_VIDEODRIVER wayland
 set -x CLUTTER_BACKEND wayland
