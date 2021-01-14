@@ -45,7 +45,7 @@ exec_always {
 ### Input configuration
 input * {
     xkb_layout us,ru
-    xkb_options grp:alt_space_toggle
+    xkb_options grp:caps_toggle
 }
 
 
@@ -59,12 +59,8 @@ input * {
     bindsym $mod+q kill
 
 
-    #Lock/shutdown/hibernate
-    bindsym $mod+z exec nwgbar
-
-
     # Start your launcher
-    bindsym $mod+Space exec bemenu-run -b -i
+    bindsym $mod+d exec dmenu_run -b -fn "firacode:pixelsize=13:antialias=true:autohint=true"
 
 
     # Floating button
