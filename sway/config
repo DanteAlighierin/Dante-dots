@@ -197,7 +197,18 @@ bindsym Control+$mod+e exec notify-send "End session" "Press Q to poweroff, W to
 # Bar
 bar {
      position top
-     swaybar_command waybar
+     font pango: firacode 12 
+     status_command while ~/.config/sway/bar.sh; do sleep 1; done
+     colors {
+	statusline #ffffff
+	background #000000
+	focused_workspace  #4c7899 #285577 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+        binding_mode       #2f343a #900000 #ffffff
+#	inactive_workspace #323232 #323232 #5c5c5c
+}
      }
 
 
