@@ -19,6 +19,7 @@ set $term st
 set $menu bemenu_run -b
 
 
+
 ## Font
 font pango:firacode 9
 
@@ -31,6 +32,10 @@ output * bg `find $wallpapers_path -type f | shuf -n 1` fill
 
 # Run VPN
 exec_always --no-startup-id sudo wg-quick up wg0
+
+
+
+
 
 # GTK theme
 set $gnome-schema org.gnome.desktop.interface
@@ -48,6 +53,7 @@ input * {
     xkb_options grp:caps_toggle
 }
 
+bindsym $mod+t exec wlsunset
 
 ### Key bindings
 # Basics:
