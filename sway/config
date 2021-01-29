@@ -11,39 +11,26 @@ set $up k
 set $right l
 
 
-# Your preferred terminal emulator
-set $term st
-
-
-# Preferred menu
-set $menu bemenu_run -b
-
-
-
 ## Font
 font pango:firacode 9
 
 
 # Wallpaper
-set $wallpapers_path ~/.config/sway/images
+set $wallpapers_path ~/img/
 
 output * bg `find $wallpapers_path -type f | shuf -n 1` fill
-
-
-# Run VPN
-exec_always --no-startup-id sudo wg-quick up wg0
-
-
-
 
 
 # GTK theme
 set $gnome-schema org.gnome.desktop.interface
 
+exec_always import-gsettings
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Mojave-dark'
-    gsettings set $gnome-schema icon-theme 'la-capitaine-icon-theme'
+	gsettings set org.gnome.desktop.interface gtk-theme
+"WhiteSur-dark"
+	gsettings set org.gnome.desktop.interface icon-theme "WhiteSur-dark"
+
 }
 
 
@@ -55,7 +42,9 @@ input * {
 
 bindsym $mod+t exec wlsunset
 
+
 ### Key bindings
+
 # Basics:
     # Start a terminal
     bindsym $mod+Return exec  st -f "firacode:pixelsize=18:antialias=true:autohint=true"
@@ -77,8 +66,8 @@ bindsym $mod+t exec wlsunset
     bindsym Control+$mod+c reload
 
 
-   # Screenshot
-   bindsym Print exec grim -g "$(slurp)" - | wl-copy
+    # Screenshot
+    bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
 
 
@@ -205,7 +194,8 @@ bar {
      position top
      font pango: firacode 12 
      status_command while ~/.config/sway/bar.sh; do sleep 1; done
-     colors {
+     binding_mode_indicator yes
+	colors {
 	statusline #ffffff
 	background #000000
 	focused_workspace  #4c7899 #285577 #ffffff
@@ -230,22 +220,30 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 for_window [window_role="messages"] floating enable
-for_window [app_id="xarchiver"] floating enable; focus
-for_window [class="xarchiver"] floating enable
+#for_window [app_id="xarchiver"] floating enable; focus
+#for_window [class="xarchiver"] floating enable
 for_window [class="telegram-desktop"] floating enable
 for_window [app_id="telegram-desktop"] floating enable
 for_window [app_id="telegram-desktop"] [floating] resize set 640 480
 for_window [app_id="icecat"] floating enable
 for_window [app_id="icecat"] [floating] resize set 1200 650
 for_window [app_id="icecat"] border none
-for_window [app_id="qtfm"] floating enable
-for_window [app_id="qtfm"] [floating] resize set 640 480
+
+
+assign [class="icecat"] 1
+assign [class="telegram-desktop"] 9
+
+popup_during_fullscreen smart
+
 
 # Change layout mode
 exec_always ~/.local/bin/swaymgr
 bindsym $mod+Alt+m exec ~/.local/bin/swaymgr -s 'set manual' && exec notify-send 'manual layout'
 bindsym $mod+Alt+l exec ~/.local/bin/swaymgr -s 'set left'   && exec notify-send 'left layout'
 bindsym $mod+Alt+s exec ~/.local/bin/swaymgr -s 'set spiral' && exec notify-send 'spiral layout'
+
+exec_always dmenu_run -b -fn "firacode:pixelsize=13:antialias=true:autohint=true"
+
 
 
 # Border's colors
