@@ -1,0 +1,122 @@
+# Typical laptop setup, with wifi, brightness, battery etc, for
+# i3/Sway.
+
+# For X11/i3, you'll want to replace calls to swaymsg with i3-msg, and
+# the sway-xkb module with the xkb module.
+
+# fonts we'll be re-using here and there
+awesome: &awesome Font Awesome 5 Free:style=solid:pixelsize=16
+awesome_brands: &awesome_brands Font Awesome 5 Brands:pixelsize=16
+
+std_underline: &std_underline {underline: { size: 2, color: DD5001FF}} #DD5001FF
+
+# This is THE bar configuration
+bar:
+  height: 23
+  location: top
+  spacing: 10
+  margin: 10
+
+  # Default font
+  font: firacode*:style=Medium:size=14
+
+  foreground: ffffffff
+  background: 111111e6 #e6
+
+  border:
+    width: 0
+    color: 999999cc
+    margin: 0
+    left-margin: 0
+    right-margin: 0
+
+  left:
+    - i3:
+        sort: ascending
+        anchors: # Not used (directly) by f00bar; used here to avoid duplication
+          - string: &i3_common {margin: 5, on-click: "swaymsg --quiet workspace {name}"}
+          - string: &default {<<: *i3_common, text: " {name} "}
+          - focused: &focused
+              deco: {stack: [ *std_underline]}
+          - invisible: &invisible {foreground: ffffff55}
+          - urgent: &urgent
+              foreground: 000000ff
+              deco: {stack: [background: {color: bc2b3fff}, <<: *std_underline]}
+          - map: &i3_mode
+              tag: mode
+              default:
+                - string:
+                    margin: 5
+                    text: "{mode}"
+                    deco: {background: {color: cc421dff}}
+                - empty: {right-margin: 7}
+              values:
+                default: {empty: {}}
+        content:
+          "":
+            map:
+              tag: state
+              values:
+                focused:   {string: {<<: [*default, *focused]}}
+                unfocused: {string: {<<: *default}}
+                invisible: {string: {<<: [*default, *invisible]}}
+                urgent:    {string: {<<: [*default, *urgent]}}
+  right:
+    - removables:
+        anchors:
+          drive: &drive { text: , font: *awesome}
+          optical: &optical {text: , font: *awesome}
+        spacing: 5
+        content:
+          map:
+            tag: mounted
+            values:
+              false:
+                map:
+                  tag: optical
+                  on-click: pmount {device}
+                  values:
+                    false: [{string: *drive}, {string: {text: "{label}"}}]
+                    true: [{string: *optical}, {string: {text: "{label}"}}]
+              true:
+                map:
+                  tag: optical
+                  on-click: pumount {device}
+                  values:
+                    false:
+                      - string: {<<: *drive, deco: *std_underline}
+                      - string: {text: "{label}"}
+                    true:
+                      - string: {<<: *optical, deco: *std_underline}
+                      - string: {text: "{label}"}
+
+    - network:
+        name: enp0s29f7u1
+        content:
+          map:
+            tag: state
+            default: {string: {text:  , font: *awesome, foreground: ffffffff}}
+            values:
+              down: {string: {text:  , font: *awesome, foreground: ff0000ff}}
+              up:
+                map:
+                  tag: ipv4
+                  default: {string: {text:  , font: *awesome}}
+                  values:
+                    "": {string: {text:  , font: *awesome, foreground: ffffffff}}
+
+
+
+    - clock:
+        time-format: "%H:%M %Z"
+        content:
+          #- string: {text: , font: *awesome}
+          - string: {text: "{date}", right-margin: 20}
+          #- string: {text: , font: *awesome}
+          - string: {text: "{time}", right-margin: 10}
+#    - label:
+#        content:
+#          string:
+#            on-click: loginctl poweroff
+#            text: 
+#            font: *awesome

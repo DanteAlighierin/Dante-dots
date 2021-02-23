@@ -1,0 +1,260 @@
+### Variables
+
+# Modifer
+set $mod Mod4
+
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+
+
+
+## Font
+font pango:Hack 10
+
+
+# Wallpaper
+set $wallpapers_path ~/img/Papes
+
+output * bg `find $wallpapers_path -type f | shuf -n 1` fill
+
+
+# GTK theme
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always import-gsettings
+
+exec_always {
+	gsettings set org.gnome.desktop.interface gtk-theme
+"WhiteSur-dark"
+	gsettings set org.gnome.desktop.interface icon-theme "WhiteSur-dark"
+
+}
+
+
+### Input configuration
+input * {
+    xkb_layout us,ru
+    xkb_options grp:caps_toggle
+}
+
+bindsym $mod+t exec wlsunset
+
+
+### Key bindings
+
+# Basics:
+    # Start a terminal
+ #   bindsym $mod+Return exec  st -f "Hack:pixelsize=20:antialias=true:autohint=true"
+    bindsym $mod+Return exec foot 
+    # Kill focused window
+    bindsym $mod+q kill
+
+
+    # Start your launcher
+ #   bindsym $mod+d exec dmenu_run -b -fn "firacode:pixelsize=13:antialias=true:autohint=true"
+    bindsym $mod+d exec rofi -show run
+
+    bindsym $mod+p exec --no-startup-id ~/.config/rofi/rofi-power/rofi-power
+
+    # Floating button
+    floating_modifier $mod normal
+
+
+    # Reload the configuration file
+    bindsym Control+$mod+c reload
+
+
+    # Screenshot
+    bindsym Print exec grim -g "$(slurp)" - | wl-copy
+
+
+
+# Moving around:
+
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+
+
+# Workspaces:
+
+    # Switch to workspace
+    bindsym $mod+1 workspace 1
+    bindsym $mod+2 workspace 2
+    bindsym $mod+3 workspace 3
+    bindsym $mod+4 workspace 4
+    bindsym $mod+5 workspace 5
+    bindsym $mod+6 workspace 6
+    bindsym $mod+7 workspace 7
+    bindsym $mod+8 workspace 8
+    bindsym $mod+9 workspace 9
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace 1
+    bindsym $mod+Shift+2 move container to workspace 2
+    bindsym $mod+Shift+3 move container to workspace 3
+    bindsym $mod+Shift+4 move container to workspace 4
+    bindsym $mod+Shift+5 move container to workspace 5
+    bindsym $mod+Shift+6 move container to workspace 6
+    bindsym $mod+Shift+7 move container to workspace 7
+    bindsym $mod+Shift+8 move container to workspace 8
+    bindsym $mod+Shift+9 move container to workspace 9
+
+
+# Layout stuff:
+    # Mode
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+a layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym Control+$mod+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym Control+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+shift+a focus parent
+
+
+# Scratchpad:
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+
+
+# Resizing containers:
+mode "Resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+
+# Logout menu bindings
+mode "Logout" {
+    bindsym q exec doas poweroff
+    bindsym w exec doas reboot
+    bindsym e exec swaymsg exit
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+
+# Run 'resize' mode'
+bindsym $mod+r mode "Resize"
+
+
+# Logout menu
+bindsym Control+$mod+e exec notify-send "End session" "Press Q to poweroff, W to reboot, E to logout, or Esc to cancel." && swaymsg mode Logout
+
+
+# Bar
+#bar {
+ #    position top
+  #   font pango: firacode 12 
+   #  status_command while ~/.config/sway/bar.sh; do sleep 1; done
+    # binding_mode_indicator yes
+#	colors {
+###	statusline #ffffff
+#	background #000000
+#	focused_workspace  #4c7899 #285577 #ffffff
+ #       active_workspace   #333333 #5f676a #ffffff
+  #      inactive_workspace #333333 #222222 #888888
+   #     urgent_workspace   #2f343a #900000 #ffffff
+    #    binding_mode       #2f343a #900000 #ffffff
+#	inactive_workspace #323232 #323232 #5c5c5c
+#}
+ #    }
+
+
+# border / titlebar / floating / focus
+default_border pixel
+for_window [app_id="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 2
+#for_window [class="Gimp"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [window_role="messages"] floating enable
+#for_window [app_id="xarchiver"] floating enable; focus
+#for_window [class="xarchiver"] floating enable
+for_window [class="telegram-desktop"] floating enable
+for_window [app_id="telegram-desktop"] floating enable
+for_window [app_id="telegram-desktop"] [floating] resize set 640 480
+for_window [app_id="firefox-wayland"] floating enable border none
+for_window [app_id="firefox-wayland"] [floating] resize set 1200 650
+for_window [app_id="firefox-wayland"] border none
+
+
+assign [class="firefox-wayland"] 1
+assign [class="telegram-desktop"] 9
+
+popup_during_fullscreen smart
+
+
+# Change layout mode
+exec_always ~/.local/bin/swaymgr
+bindsym $mod+Alt+m exec ~/.local/bin/swaymgr -s 'set manual' && exec notify-send 'manual layout'
+bindsym $mod+Alt+l exec ~/.local/bin/swaymgr -s 'set left'   && exec notify-send 'left layout'
+bindsym $mod+Alt+s exec ~/.local/bin/swaymgr -s 'set spiral' && exec notify-send 'spiral layout'
+
+#exec_always dmenu_run -b -fn "firacode:pixelsize=13:antialias=true:autohint=true"
+
+
+
+# Border's colors
+client.focused              #ffffff #ffffff #ffffff #ffffff #ffffff
+client.unfocused            #373b41 #373b41 #d8d8d8 #373b41 #373b41
+client.focused_inactive     #373b41 #373b41 #d8d8d8 #373b41 #373b41
+
+
+exec yambar
+
+include /etc/sway/config.d/*
