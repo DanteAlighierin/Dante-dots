@@ -25,7 +25,7 @@ set -x MOZ_WEBRENDER 1
 set -x GDK_BACKEND wayland
 set -x QT_WAYLAND_DISABLE_WINDOWDECORATION 1
 set -x QT_SCALE_FACTOR 1
-set -x QT_QPA_PLATFORM wayland
+set -x QT_QPA_PLATFORM wayland-egl
 set -x QT_QPA_PLATFORMTHEME qt5ct
 set -x SDL_VIDEODRIVER wayland
 set -x CLUTTER_BACKEND wayland
