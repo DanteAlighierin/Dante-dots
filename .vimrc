@@ -21,6 +21,7 @@ Plug 'w0ng/vim-hybrid'
 " => Utils
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""
+Plug 'junegunn/goyo.vim'
 Plug 'preservim/nerdtree'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'shougo/neocomplcache.vim'
@@ -81,7 +82,6 @@ set visualbell t_vb=
 set showtabline=1
 set encoding=utf-8
 set fileencodings=utf8,cp1251
-
-
-
+set clipboard=unnamedplus 
+set noswapfile
 filetype plugin on
