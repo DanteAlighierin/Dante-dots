@@ -11,12 +11,14 @@ set $up k
 set $right l
 
 
+
+
 ## Font
-font pango:firacode 9
+font pango:Hack 10
 
 
 # Wallpaper
-set $wallpapers_path ~/img/
+set $wallpapers_path ~/img/Papes
 
 output * bg `find $wallpapers_path -type f | shuf -n 1` fill
 
@@ -47,16 +49,17 @@ bindsym $mod+t exec wlsunset
 
 # Basics:
     # Start a terminal
-    bindsym $mod+Return exec  st -f "firacode:pixelsize=18:antialias=true:autohint=true"
-
-
+ #   bindsym $mod+Return exec  st -f "Hack:pixelsize=20:antialias=true:autohint=true"
+    bindsym $mod+Return exec foot 
     # Kill focused window
     bindsym $mod+q kill
 
 
     # Start your launcher
-    bindsym $mod+d exec dmenu_run -b -fn "firacode:pixelsize=13:antialias=true:autohint=true"
+ #   bindsym $mod+d exec dmenu_run -b -fn "firacode:pixelsize=13:antialias=true:autohint=true"
+    bindsym $mod+d exec rofi -show run
 
+    bindsym $mod+p exec --no-startup-id ~/.config/rofi/rofi-power/rofi-power
 
     # Floating button
     floating_modifier $mod normal
@@ -190,22 +193,22 @@ bindsym Control+$mod+e exec notify-send "End session" "Press Q to poweroff, W to
 
 
 # Bar
-bar {
-     position top
-     font pango: firacode 12 
-     status_command while ~/.config/sway/bar.sh; do sleep 1; done
-     binding_mode_indicator yes
-	colors {
-	statusline #ffffff
-	background #000000
-	focused_workspace  #4c7899 #285577 #ffffff
-        active_workspace   #333333 #5f676a #ffffff
-        inactive_workspace #333333 #222222 #888888
-        urgent_workspace   #2f343a #900000 #ffffff
-        binding_mode       #2f343a #900000 #ffffff
+#bar {
+ #    position top
+  #   font pango: firacode 12 
+   #  status_command while ~/.config/sway/bar.sh; do sleep 1; done
+    # binding_mode_indicator yes
+#	colors {
+###	statusline #ffffff
+#	background #000000
+#	focused_workspace  #4c7899 #285577 #ffffff
+ #       active_workspace   #333333 #5f676a #ffffff
+  #      inactive_workspace #333333 #222222 #888888
+   #     urgent_workspace   #2f343a #900000 #ffffff
+    #    binding_mode       #2f343a #900000 #ffffff
 #	inactive_workspace #323232 #323232 #5c5c5c
-}
-     }
+#}
+ #    }
 
 
 # border / titlebar / floating / focus
@@ -225,12 +228,12 @@ for_window [window_role="messages"] floating enable
 for_window [class="telegram-desktop"] floating enable
 for_window [app_id="telegram-desktop"] floating enable
 for_window [app_id="telegram-desktop"] [floating] resize set 640 480
-for_window [app_id="icecat"] floating enable
-for_window [app_id="icecat"] [floating] resize set 1200 650
-for_window [app_id="icecat"] border none
+for_window [app_id="firefox-wayland"] floating enable border none
+for_window [app_id="firefox-wayland"] [floating] resize set 1200 650
+for_window [app_id="firefox-wayland"] border none
 
 
-assign [class="icecat"] 1
+assign [class="firefox-wayland"] 1
 assign [class="telegram-desktop"] 9
 
 popup_during_fullscreen smart
@@ -242,7 +245,7 @@ bindsym $mod+Alt+m exec ~/.local/bin/swaymgr -s 'set manual' && exec notify-send
 bindsym $mod+Alt+l exec ~/.local/bin/swaymgr -s 'set left'   && exec notify-send 'left layout'
 bindsym $mod+Alt+s exec ~/.local/bin/swaymgr -s 'set spiral' && exec notify-send 'spiral layout'
 
-exec_always dmenu_run -b -fn "firacode:pixelsize=13:antialias=true:autohint=true"
+#exec_always dmenu_run -b -fn "firacode:pixelsize=13:antialias=true:autohint=true"
 
 
 
@@ -251,5 +254,7 @@ client.focused              #ffffff #ffffff #ffffff #ffffff #ffffff
 client.unfocused            #373b41 #373b41 #d8d8d8 #373b41 #373b41
 client.focused_inactive     #373b41 #373b41 #d8d8d8 #373b41 #373b41
 
+
+exec yambar
 
 include /etc/sway/config.d/*
