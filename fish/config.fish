@@ -8,10 +8,13 @@ if test -z "$DISPLAY"; and test $TTY1 = "/dev/tty1"
     
 end
 
+
 set fish_greeting
 #chmod 0700 /tmp/swaytmp
 #set -x XDG_RUNTIME_DIR /run/user/dante
 
+set -x PATH ~/.local/share/junest/bin:$PATH
+set -x PATH "$PATH:~/.junest/usr/bin_wrappers"
 set -x GTK_THEME ~/.themes/WhiteSur-dark
 set -x XDG_CONFIG_HOME $HOME/.config
 set -x XDG_CACHE_HOME $HOME/.cache
