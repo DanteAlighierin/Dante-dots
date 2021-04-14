@@ -1,0 +1,36 @@
+general {
+        output_format = "i3bar"
+        colors = false
+        markup = pango
+        interval = 5
+        color_good = '#2f343f'
+		color_degraded = '#ebcb8b'
+		color_bad = '#ba5e57'
+}
+
+order += "memory"
+order += "ethernet _first_"
+order += "tztime local"
+
+memory {
+    format = "<span background='#b48ead'>  %used </span>"
+
+    threshold_degraded = "2G"
+    threshold_critical = "1G"
+    format_degraded = "MEMORY < %available"
+}
+
+
+ethernet _first_ {
+        format_up = "<span background='#a3be8c'> Connected </span>"
+        format_down = "<span background='#bf616a'> Couldn't connect </span>"
+}
+
+
+tztime local {
+		format = "<span background='#81a1c1'> %time </span>"
+		format_time = " %a %-d %b %H:%M"
+}
+
+
+
