@@ -1,73 +1,58 @@
 ### Variables
 
-# Modifer
+# Logo key. Use Mod1 for Alt.
 set $mod Mod4
-
-exec wl-paste -t text --watch clipman store
-
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
+# Your preferred terminal emulator
+set $term foot
+# Your preferred application launcher
+set $menu dmenu_path | wofi --show run --allow images
 
+### Output configuration
 
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 set $wallpapers_path ~/img/Papes
 output * bg `find $wallpapers_path -type f | shuf -n 1` fill
 
 
-# GTK theme
-set $gnome-schema org.gnome.desktop.interface
 
-exec_always import-gsettings
-
-exec_always {
-	gsettings set org.gnome.desktop.interface icon-theme "WhiteSur"
-
-}
-
-
-### Input configuration
+# Keyboard layout
 input * {
     xkb_layout us,ru
-    xkb_options grp:caps_toggle
-}
+    xkb_options grp:alt_shift_toggle
+        }
 
-bindsym $mod+t exec wlsunset
 
-bindsym $mod+y exec ytfzf -D
 
 ### Key bindings
 
 # Basics:
+
     # Start a terminal
- #   bindsym $mod+Return exec  st -f "Hack:pixelsize=20:antialias=true:autohint=true"
-    bindsym $mod+Return exec foot 
+    bindsym $mod+Return exec foot
+
     # Kill focused window
     bindsym $mod+q kill
 
-
     # Start your launcher
- #   bindsym $mod+d exec dmenu_run -b -fn "firacode:pixelsize=13:antialias=true:autohint=true"
-    bindsym $mod+d exec rofi -show run
+    bindsym $mod+d exec $menu
 
-    bindsym $mod+p exec --no-startup-id ~/.config/rofi/rofi-power/rofi-power
-
-    # Floating button
+    #floating_modifier
     floating_modifier $mod normal
 
-
     # Reload the configuration file
-    bindsym Control+$mod+c reload
+    bindsym $mod+Shift+r reload
 
-
-    # Screenshot
-    bindsym Print exec grim -g "$(slurp)" - | wl-copy
-
-
-
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+#
 # Moving around:
-
+#
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
@@ -89,39 +74,44 @@ bindsym $mod+y exec ytfzf -D
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
-
-
+#
 # Workspaces:
-
+#
     # Switch to workspace
-    bindsym $mod+1 workspace 1
-    bindsym $mod+2 workspace 2
-    bindsym $mod+3 workspace 3
-    bindsym $mod+4 workspace 4
-    bindsym $mod+5 workspace 5
-    bindsym $mod+6 workspace 6
-    bindsym $mod+7 workspace 7
-    bindsym $mod+8 workspace 8
-    bindsym $mod+9 workspace 9
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace 1
-    bindsym $mod+Shift+2 move container to workspace 2
-    bindsym $mod+Shift+3 move container to workspace 3
-    bindsym $mod+Shift+4 move container to workspace 4
-    bindsym $mod+Shift+5 move container to workspace 5
-    bindsym $mod+Shift+6 move container to workspace 6
-    bindsym $mod+Shift+7 move container to workspace 7
-    bindsym $mod+Shift+8 move container to workspace 8
-    bindsym $mod+Shift+9 move container to workspace 9
-
-
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+#
 # Layout stuff:
-    # Mode
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
     bindsym $mod+b splith
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+a layout stacking
+    bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
@@ -129,26 +119,31 @@ bindsym $mod+y exec ytfzf -D
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym Control+$mod+space floating toggle
+    bindsym $mod+space floating toggle
 
-    # Swap focus between the tiling area and the floating area
-    bindsym Control+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+shift+a focus parent
-
-
+    bindsym $mod+a focus parent
+#
 # Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
     # Move the currently focused window to the scratchpad
     bindsym $mod+Shift+minus move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
-
-
+#
 # Resizing containers:
-mode "Resize" {
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
@@ -164,96 +159,44 @@ mode "Resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+bindsym $mod+r mode "resize"
 
 
-# Logout menu bindings
-mode "Logout" {
-    bindsym q exec doas poweroff
-    bindsym w exec doas reboot
-    bindsym e exec swaymsg exit
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+#Gap settings
+gaps inner 10
+gaps outer 0
+smart_gaps on
+bindsym $mod+g gaps inner current set 10; gaps outer current set 0
+bindsym $mod+Shift+g gaps inner current set 0; gaps outer current set 0
 
 
-# Run 'resize' mode'
-bindsym $mod+r mode "Resize"
+# Titles/borders/popup
+popup_during_fullscreen smart
+default_border pixel 3px
+
+# Screenshot
+bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
 
-# Logout menu
-bindsym Control+$mod+e exec notify-send "End session" "Press Q to poweroff, W to reboot, E to logout, or Esc to cancel." && swaymsg mode Logout
 
-
-#exec yambar
-
-
-# Bar
-#bar {
- #    position top
-    # font pango: Hack 12
-   #  binding_mode_indicator yes
-  #   tray_output primary
- #    status_command while ~/.config/sway/bar.sh; do sleep 1; done
-#	colors {
-#	statusline #ffffff
-#	background #323232
-#	focused_workspace #323232 #bc2b3fff #ffffff
-#	inactive_workspace #323232 #323232 #ffffff
-#}
- #    }
-
-
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
 bar {
-    swaybar_command waybar
+    position top
+    status_command i3status
+    colors {
+        statusline #ffffff
+        background #323232
+ #       inactive_workspace #32323200 #32323200 #5c5c5c
+    }
 }
 
 
-
-
-# border / titlebar / floating / focus
-default_border pixel
-for_window [app_id="^.*"] border pixel 1
-for_window [class="^.*"] border pixel 1
-#for_window [class="Gimp"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_role="Preferences"] floating enable
+for_window [window_role="dialog"] floating enable
 for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
-for_window [window_role="messages"] floating enable
-#for_window [app_id="xarchiver"] floating enable; focus
-#for_window [class="xarchiver"] floating enable
-for_window [class="telegram-desktop"] floating enable
-for_window [app_id="telegram-desktop"] floating enable
-for_window [app_id="telegram-desktop"] [floating] resize set 640 480
-for_window [app_id="firefox-wayland"] floating enable border none
-for_window [app_id="firefox-wayland"] [floating] resize set 1200 650
-for_window [app_id="firefox-wayland"] border none
-for_window [app_id="chromium"] [floating] resize set 1200 650
-for_window [app_id="mpv"] border none
-for_window [app_id="keepassxc"] floating enable
-for_window [app_id="telegram-desktop"] border none
-for_window [app_id="chromium"] border none
-
-popup_during_fullscreen smart
-
-
-# Change layout mode
-exec_always ~/.local/bin/swaymgr
-bindsym $mod+Alt+m exec ~/.local/bin/swaymgr -s 'set manual' && exec notify-send 'manual layout'
-bindsym $mod+Alt+l exec ~/.local/bin/swaymgr -s 'set left'   && exec notify-send 'left layout'
-bindsym $mod+Alt+s exec ~/.local/bin/swaymgr -s 'set spiral' && exec notify-send 'spiral layout'
-
-#exec_always dmenu_run -b -fn "firacode:pixelsize=13:antialias=true:autohint=true"
-
-
-
-# Border's colors
-client.focused              #ffffff #ffffff #ffffff #ffffff #ffffff
-client.unfocused            #373b41 #373b41 #d8d8d8 #373b41 #373b41
-client.focused_inactive     #373b41 #373b41 #d8d8d8 #373b41 #373b41
-
 
 
 include /etc/sway/config.d/*
