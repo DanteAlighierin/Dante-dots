@@ -1,6 +1,6 @@
 # Dante-dots
 
-![](./assets/asis.png)
+![](./assets/home.png)
 
 
 ![](./assets/withwindows.png)
@@ -24,20 +24,20 @@ I can change the wallpaper without any problems and change the color scheme in t
 
 
 - shell: fish(main), bash
-- editor: [vim](https://dantealighierin.github.io/comfyvim)
+- editor: [vim](https://dantealighierin.github.io/post/vim)
 
 ![](./assets/vimwow.png)
 
-- terminal: st with [LukeSmith's patches](https://github.com/LukeSmithxyz/st)
+- terminal: foot
 - browser: IceCat
 
 ![](./assets/icecat.png)
 
-- fm: ranger(cli) and qtfm(gui)
+- fm: ranger(cli) and pcmanfm
 
 ![](./assets/ranger.png)
 
-![](./assets/qtfm.png)
+![](./assets/fm.png)
 
 - audio: alsa as backend, cmus, mpv for videos and [SomaFM](https://github.com/MS3FGX/SomaFM)
 - task manager: htop
@@ -55,6 +55,6 @@ I can change the wallpaper without any problems and change the color scheme in t
 
 ## Themes
 
-- term colorsheme: gruvbox-dark
+- term colorsheme: foot default
 - gtk/qt theme: [WhiteSur-dark](https://github.com/vinceliuice/WhiteSur-gtk-theme)
 - icon-theme: [Whitesur-dark](https://github.com/vinceliuice/WhiteSur-icon-theme)
